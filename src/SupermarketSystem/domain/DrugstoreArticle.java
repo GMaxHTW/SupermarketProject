@@ -1,3 +1,5 @@
+package SupermarketSystem.domain;
+
 public class DrugstoreArticle extends AbstractProduct{
 
 

@@ -1,3 +1,5 @@
+package SupermarketSystem.domain;
+
 public abstract class AbstractProduct implements ProductInterface {
 
     // Attribute Supermarkt Produkte
@@ -20,10 +22,10 @@ public abstract class AbstractProduct implements ProductInterface {
         }
     }
 
-    public void calculateProfit () {
-        double profit = this.salesPrice - this.purchasePrice;
-        System.out.println("Bei dem Produkt " + this.name + " liegt der Gewinn pro verkauftem Artikel liegt bei: " + profit + "€.");
-    }
+//    public void calculateProfit () {
+//        double profit = this.salesPrice - this.purchasePrice;
+//        System.out.println("Bei dem Produkt " + this.name + " liegt der Gewinn pro verkauftem Artikel liegt bei: " + profit + "€.");
+//    }
 
 
     @Override

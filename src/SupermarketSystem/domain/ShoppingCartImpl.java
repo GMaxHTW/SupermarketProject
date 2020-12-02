@@ -1,8 +1,10 @@
+package SupermarketSystem.domain;
+
 import java.util.List;
 
 public class ShoppingCartImpl implements ShoppingCart{
 
-    // Liste vom Typ ProductInterface
+    // Liste vom Typ SupermarketSystem.domain.ProductInterface
     private final List<ProductInterface> products;
 
     public ShoppingCartImpl(List<ProductInterface> products) {

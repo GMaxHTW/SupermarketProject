@@ -1,9 +1,11 @@
+package SupermarketSystem.domain;
+
 public class Food extends AbstractProduct{
 
 
 
 
-    // Konstruktor Food
+    // Konstruktor SupermarketSystem.domain.Food
     public Food(String name, double salesPrice, double purchasePrice) {
         super(name, salesPrice, purchasePrice);
     }
@@ -13,5 +15,8 @@ public class Food extends AbstractProduct{
         return "Name des Produktes: " + getName() + "\nVerkaufspreis: " + getSalesPrice()
                 + "\nEinkaufspreis: " + getPurchasePrice();
     }
+
+
+
 
 }

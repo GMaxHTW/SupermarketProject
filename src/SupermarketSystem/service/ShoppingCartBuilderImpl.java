@@ -1,3 +1,7 @@
+package SupermarketSystem.service;
+
+import SupermarketSystem.domain.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,24 +15,26 @@ public class ShoppingCartBuilderImpl implements ShoppingCartBuilder{
 
 
     @Override
-    public boolean addArticlesById(List<String> ids) {
+    public boolean addArticlesById(List<Integer> ids) {
 
-        for (String id : ids) {
+        for (Integer id : ids) {
 
             if (ArticleData.getAllArticles().containsKey(id)) {
 
-                AbstractProduct data = ArticleData.getAllArticles().get(id);
+                ArticleData data = ArticleData.getAllArticles().get(id);
+
+                //AbstractProduct data = ArticleData.getAllArticles().get(id);
 
                 if (ArticleData.foods.containsKey(id)) {
-                    products.add(new Food (data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
+                    products.add(new Food(data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
                 }
 
                 if (ArticleData.drinks.containsKey(id)) {
-                    products.add(new Drink (data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
+                    products.add(new Drink(data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
                 }
 
                 if (ArticleData.drugStoreArticles.containsKey(id)) {
-                    products.add(new DrugstoreArticle (data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
+                    products.add(new DrugstoreArticle(data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
                 }
 
 

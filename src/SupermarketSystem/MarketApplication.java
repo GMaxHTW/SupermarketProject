@@ -1,3 +1,11 @@
+package SupermarketSystem;
+
+import SupermarketSystem.service.ShoppingCartBuilder;
+import SupermarketSystem.service.ShoppingCartBuilderImpl;
+import SupermarketSystem.ui.ChatbotUI;
+import SupermarketSystem.ui.CommaAndWhitespaceSplittingInputParser;
+import SupermarketSystem.ui.UserInputWrapper;
+
 public class MarketApplication {
 
     public static void main (String[] args)  {

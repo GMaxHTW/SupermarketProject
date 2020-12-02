@@ -1,3 +1,5 @@
+package SupermarketSystem.domain;
+
 public class Drink extends AbstractProduct{
 
 

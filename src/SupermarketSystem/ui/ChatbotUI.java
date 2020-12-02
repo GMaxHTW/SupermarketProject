@@ -1,9 +1,10 @@
-import java.util.*;
-
-import ShoppingCart;
-import ShoppingCartBuilder;
+package SupermarketSystem.ui;
 
 import java.util.*;
+
+import SupermarketSystem.domain.ShoppingCart;
+import SupermarketSystem.service.ShoppingCartBuilder;
+import SupermarketSystem.service.ArticleData;
 
 
 public class ChatbotUI {
@@ -38,17 +39,17 @@ public class ChatbotUI {
     public List<Double> articleIdsFromOrder(String inputLine) {
 
         // Was ist denn genau der Unterschied zwischen einem Set und einer Liste ???
-        Set<String> articles = ArticleData.getAllArticles().keySet();  // Liefert Set mit allen Produktnamen
+        Set<Integer> articles = ArticleData.getAllArticles().keySet();  // Liefert Set mit allen Produktnamen
         Map <String, Integer> articleCount = parser.countKeywords(inputLine, articles); // Gibt Liste mit Artikeln die keywords entsprechen
 
-        Map<String, Double> articleMap = ArticleData.getAllArticles();
+        Map<Integer, ArticleData> articleMap = ArticleData.getAllArticles();
 
         List<Double> ids = new ArrayList<>();
 
 
         for (Map.Entry<String, Integer> entry : articleCount.entrySet()) {
             String articleName = entry.getKey();
-            double articleId = articleMap.get(articleName);
+            ArticleData articleId = articleMap.get(articleName);
             int count = entry.getValue();
 
 

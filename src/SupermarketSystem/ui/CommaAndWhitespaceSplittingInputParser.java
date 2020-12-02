@@ -1,3 +1,5 @@
+package SupermarketSystem.ui;
+
 import java.util.*;
 
 public class CommaAndWhitespaceSplittingInputParser implements InputParser{
