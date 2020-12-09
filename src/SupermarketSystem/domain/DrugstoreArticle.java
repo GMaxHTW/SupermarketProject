@@ -13,4 +13,12 @@ public class DrugstoreArticle extends AbstractProduct{
         return "Name des Produktes: " + getName() + "\nVerkaufspreis: " + getSalesPrice()
                 + "\nEinkaufspreis: " + getPurchasePrice();
     }
+
+//    @Override
+//    public int compareTo(Object o) {
+//        if (o instanceof AbstractProduct) {
+//
+//        }
+//        return 0;
+//    }
 }

@@ -1,6 +1,5 @@
 package SupermarketSystem.domain;
 
-import SupermarketSystem.domain.ProductInterface;
 
 import java.util.List;
 

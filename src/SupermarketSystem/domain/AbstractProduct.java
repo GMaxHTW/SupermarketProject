@@ -1,5 +1,6 @@
 package SupermarketSystem.domain;
 
+
 public abstract class AbstractProduct implements ProductInterface {
 
     // Attribute Supermarkt Produkte
@@ -15,13 +16,15 @@ public abstract class AbstractProduct implements ProductInterface {
     }
 
 
-    public void compareSalesPrice (AbstractProduct productToCompare) {
-        if (this.salesPrice > productToCompare.salesPrice) {
-            double priceDifference = this.salesPrice - productToCompare.salesPrice;
-            System.out.println("Das Produkt " + this.getName() + " ist " + priceDifference + " € teurer als das Produkt " + productToCompare.name);
-        }
-    }
 
+
+//    public void compareSalesPrice (AbstractProduct productToCompare) {
+//        if (this.salesPrice > productToCompare.salesPrice) {
+//            double priceDifference = this.salesPrice - productToCompare.salesPrice;
+//            System.out.println("Das Produkt " + this.getName() + " ist " + priceDifference + " € teurer als das Produkt " + productToCompare.name);
+//        }
+//    }
+//
 //    public void calculateProfit () {
 //        double profit = this.salesPrice - this.purchasePrice;
 //        System.out.println("Bei dem Produkt " + this.name + " liegt der Gewinn pro verkauftem Artikel liegt bei: " + profit + "€.");

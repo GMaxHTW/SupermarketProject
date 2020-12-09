@@ -18,4 +18,12 @@ public class Drink extends AbstractProduct{
         return "\nName des Produktes: " + getName() + "\nVerkaufspreis: " + getSalesPrice()
                 + "\nEinkaufspreis: " + getPurchasePrice();
     }
+
+//    @Override
+//    public int compareTo(Object o) {
+//        if (o instanceof AbstractProduct) {
+//
+//        }
+//        return 0;
+//    }
 }

@@ -1,3 +1,5 @@
+package testing;
+
 import SupermarketSystem.service.ArticleData;
 
 public class ProgrammTest {

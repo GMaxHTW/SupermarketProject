@@ -36,9 +36,6 @@ public class ShoppingCartBuilderImpl implements ShoppingCartBuilder{
                 if (ArticleData.drugStoreArticles.containsKey(id)) {
                     products.add(new DrugstoreArticle(data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
                 }
-
-
-
             }
         }
 

@@ -17,6 +17,11 @@ public class Food extends AbstractProduct{
     }
 
 
-
-
+//    @Override
+//    public int compareTo(Object o) {
+//        if (o instanceof AbstractProduct) {
+//
+//        }
+//        return 0;
+//    }
 }
