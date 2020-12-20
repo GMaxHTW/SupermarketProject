@@ -1,12 +1,13 @@
 package SupermarketSystem.domain;
 
 
-public abstract class AbstractProduct implements ProductInterface {
+public abstract class AbstractProduct implements IProduct {
 
     // Attribute Supermarkt Produkte
     private String name;
     private double salesPrice;
     private double purchasePrice;
+    FoodValue foodValue;
 
     // Konstruktor abstrakte Klasse
     public AbstractProduct (String name, double salesPrice, double purchasePrice) {
@@ -45,5 +46,21 @@ public abstract class AbstractProduct implements ProductInterface {
     public double getPurchasePrice() {
         return purchasePrice;
     }
+
+
+
+    @Override
+    public String toString() {
+        return "Name des Produktes: " + getName() + "\nVerkaufspreis: " + getSalesPrice()
+                + "\nEinkaufspreis: " + getPurchasePrice();
+    }
+
+//    @Override
+//    public int compareTo(Object o) {
+//        if (o instanceof AbstractProduct) {
+//
+//        }
+//        return 0;
+//    }
 
 }
