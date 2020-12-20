@@ -8,6 +8,6 @@ public interface ShoppingCart {
     double calculateSalesPrice();
     double calculatePurchasePrice();
     double calculateProfit();
-    List<ProductInterface> getProducts();
+    List<IProduct> getProducts();
 
 }
