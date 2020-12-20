@@ -2,161 +2,100 @@ package SupermarketSystem.service;
 
 
 
+import SupermarketSystem.domain.*;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ArticleData implements IArticleData{
+public class ArticleData {
 
-    private final String name;
-    private final double salesPrice;
-    private final double purchasePrice;
+    private static ArticleData data;
 
-    public ArticleData (String name, double salesPrice, double purchasePrice) {
-        this.name = name;
-        this.salesPrice = salesPrice;
-        this.purchasePrice = purchasePrice;
+    private ArticleData(){
     }
 
+    public static ArticleData getInstance() {
+        if (data == null) {
+            data = new ArticleData();
+        }
+        return data;
+    }
 
     // Map Produktdaten Essen
-    public static Map <Integer, ArticleData> foods = Map.of(
-            100, new ArticleData("Die Backfrische", 2.79, 1.2),
-            101, new ArticleData("Studentenfutter", 1.5, 0.5),
-            102, new ArticleData("Paprika Chips", 1.8, 0.7),
-            103, new ArticleData("Morzarella", 1.2, 0.4));
+    public static Map <Integer, IProduct> foods = Map.of(
+            100, new Food("Die Backfrische", 2.79, 1.2,
+                    new FoodValue(3,3,3, 3,3, 3, 4,4,4)),
+            101, new Food("Studentenfutter", 1.5, 0.5,
+                    new FoodValue(3,3,3, 3,3, 3, 4,4,4)),
+
+            102, new Food("Paprika Chips", 1.8, 0.7,
+                                  new FoodValue(3,3,3, 3,3, 3, 4,4,4)));
 
     // Map Produktdaten Drinks
-    public static Map <Integer, ArticleData> drinks = Map.of(
-            200, new ArticleData("Summer Ale", 2.5, 1.3),
-            201, new ArticleData("Sterni", 0.4, 0.22),
-            202, new ArticleData("Paulaner Spezi", 0.9, 0.35),
-            203, new ArticleData("Lemonaid", 1.8, 0.9),
-            204, new ArticleData("Orangen Saft", 1.3, 0.4),
-            205, new ArticleData("Apfelsaft", 1.2, 0.5),
-            206, new ArticleData("Kirschsaft", 1.9, 0.8));
+    public static Map <Integer, IProduct> drinks = Map.of(
+            200, new Drink("Summer Ale", 2.5, 1.3,
+                    new DrinkValue(500,3,3,3,3)),
+            201, new Drink("Sterni", 0.4, 0.22,
+                    new DrinkValue(500,3,3,3,3)),
+
+            202, new Drink("Paulaner Spezi", 0.9, 0.35,
+                    new DrinkValue(500,3,3,3,3)),
+
+            203, new Drink("Lemonaid", 1.8, 0.9,
+                    new DrinkValue(500,3,3,3,3)),
+
+            204, new Drink("Orangen Saft", 1.3, 0.4,
+                    new DrinkValue(500,3,3,3,3)),
+
+            205, new Drink("Apfelsaft", 1.2, 0.5,
+                    new DrinkValue(500,3,3,3,3)),
+
+            206, new Drink("Kirschsaft", 1.9, 0.8,
+                    new DrinkValue(500,3,3,3,3)));
 
 
     // Map Produktdaten DrugstoreArticles
-    public static Map <Integer, ArticleData> drugStoreArticles = Map.of(
-            300, new ArticleData("Toilettenpapier (ultra soft", 2.89, 1.3),
-            301, new ArticleData("Nivea Stress Protect", 1.5, 0.6),
-            302, new ArticleData("Seife 1", 1.5, 0.6),
-            303, new ArticleData("Seife 2", 1.5, 0.6),
-            304, new ArticleData("Seife 3", 1.1, 0.3));
+    public static Map <Integer, IProduct> drugStoreArticles = Map.of(
+            300, new DrugstoreArticle("Toilettenpapier (ultra soft", 2.89, 1.3),
+            301, new DrugstoreArticle("Nivea Stress Protect", 1.5, 0.6),
+            302, new DrugstoreArticle("Seife 1", 1.5, 0.6),
+            303, new DrugstoreArticle("Seife 2", 1.5, 0.6),
+            304, new DrugstoreArticle("Seife 3", 1.1, 0.3));
+
 
 
     // Gibt HasMap mit allen Artikeln zurück
     // Führt also die Maps foods, drinks, drugStoreArticles in eine Map
-    public static Map <Integer, ArticleData> getAllArticles() {
-        Map <Integer, ArticleData> articles = new HashMap<>();
+    public Map <Integer, IProduct> getAllArticles() {
+        Map <Integer, IProduct> articles = new HashMap<>();
         articles.putAll(foods);
         articles.putAll(drinks);
         articles.putAll(drugStoreArticles);
         return articles;
     }
 
-    public static LinkedHashSet<String> getArticleNames () {
-        Set<ArticleData> articlesData = (Set<ArticleData>) ArticleData.getAllArticles().values();
-
-        LinkedHashSet <String> articleNames = new LinkedHashSet<>();
-        articlesData.forEach(article -> articleNames.add(article.getName()));
-
-        return articleNames;
+    public Map <String, Integer> mapNameIds() {
+        Map <String, Integer> resultMap = getAllArticles().entrySet().stream().collect(Collectors.toMap(
+                x -> x.getValue().getName(),
+                x -> x.getKey()
+        ));
+        return resultMap;
     }
 
 
 
-    public static LinkedHashSet<Integer> getArticleIds () {
-        Set<ArticleData> articlesData = (Set<ArticleData>) ArticleData.getAllArticles().values();
 
-        LinkedHashSet <Integer> articleIds = new LinkedHashSet<>();
-        articlesData.forEach(article -> articleIds.add(article.hashCode()));
-
-        return articleIds;
-    }
-
-
-
-    // tbd: wie bekomme ich die IDS und die Namen in eine Map ???
-    // Probleme Set in LinkedHashMap zu
-    public static Map <Integer, String> getArticleIdsNames() {
-
-        // Leere ERgebnis Liste
-        Map <Integer, String> articleIdsNames = new LinkedHashMap<>();
-
-        // Algo füllt Liste
-        getAllArticles().entrySet().forEach(x -> articleIdsNames.put(x.getKey(), x.getValue().getName()));
-
-
-        // Hier alles in einer Zeile
-        // Rückgabewert der Collect Methode liefert Ergebnis direkt
-        Map <Integer, String> resultMap = getAllArticles().entrySet().stream().collect(Collectors.toMap(
-                x -> x.getKey(),
-                x -> x.getValue().getName()));  //mit enty Set anderes Interface --> Dargestellt als Liste von EInträgen
-
-        //articleIdsNames.entrySet(articleIds, articleNames);
-
-
-
-        return articleIdsNames;
-    }
-
-
-    public static String printAllArticles() {
-        return getAllArticles().toString();
+    public static String printAllArticles () {
+        return String.join("", data.getAllArticles().toString());
     }
 
 
 
 
 
-    public String getName() {
-        return name;
-    }
-
-    public double getSalesPrice() {
-        return salesPrice;
-    }
-
-    public double getPurchasePrice() {
-        return purchasePrice;
-    }
-
-
-    // Macht doch auch net wirkllich Sinn weil das dann das selbe ist wie getName
-    @Override
-    public String toString() {
-        return name;
-    }
 }
 
 
 
-// unnötig ????
-//    // Attribute Article Data
-//    private final String name;
-//    private final double salesPrice;
-//    private final double purchasePrice;
-//
-//    // Konstruktor Article Data
-//    public SupermarketSystem.service.ArticleData (String name, double salesPrice, double purchasePrice) {
-//        this.name = name;
-//        this.salesPrice = salesPrice;
-//        this.purchasePrice = purchasePrice;
-//    }
-
-
-// Getter für die Attribute von Article Daata
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public double getSalesPrice() {
-//        return salesPrice;
-//    }
-//
-//    public double getPurchasePrice() {
-//        return purchasePrice;
-//    }
 
 
