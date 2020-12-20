@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ShoppingCartBuilderImpl implements ShoppingCartBuilder{
 
-    private final  List<ProductInterface> products;
+    private final  List<IProduct> products;
 
     public ShoppingCartBuilderImpl () {
         this.products = new ArrayList<>();
@@ -17,28 +17,11 @@ public class ShoppingCartBuilderImpl implements ShoppingCartBuilder{
     @Override
     public boolean addArticlesById(List<Integer> ids) {
 
+        ArticleData data = ArticleData.getInstance();
+
         for (Integer id : ids) {
-
-            if (ArticleData.getAllArticles().containsKey(id)) {
-
-                ArticleData data = ArticleData.getAllArticles().get(id);
-
-                //AbstractProduct data = ArticleData.getAllArticles().get(id);
-
-                if (ArticleData.foods.containsKey(id)) {
-                    products.add(new Food(data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
-                }
-
-                if (ArticleData.drinks.containsKey(id)) {
-                    products.add(new Drink(data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
-                }
-
-                if (ArticleData.drugStoreArticles.containsKey(id)) {
-                    products.add(new DrugstoreArticle(data.getName(), data.getSalesPrice(), data.getPurchasePrice()));
-                }
-            }
+            products.add(data.getAllArticles().get(id));
         }
-
         return false;
     }
 
