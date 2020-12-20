@@ -2,12 +2,12 @@ package SupermarketSystem.domain;
 
 public class Food extends AbstractProduct{
 
+    FoodValue foodValue;
 
 
-
-    // Konstruktor SupermarketSystem.domain.Food
-    public Food(String name, double salesPrice, double purchasePrice) {
+    public Food(String name, double salesPrice, double purchasePrice, FoodValue foodValue) {
         super(name, salesPrice, purchasePrice);
+        this.foodValue = foodValue;
     }
 
     @Override
@@ -16,12 +16,4 @@ public class Food extends AbstractProduct{
                 + "\nEinkaufspreis: " + getPurchasePrice();
     }
 
-
-//    @Override
-//    public int compareTo(Object o) {
-//        if (o instanceof AbstractProduct) {
-//
-//        }
-//        return 0;
-//    }
 }
