@@ -1,6 +1,6 @@
 package SupermarketSystem.domain;
 
-public interface ProductInterface {
+public interface IProduct {
 
     String getName();
     double getSalesPrice();
