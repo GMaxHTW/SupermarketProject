@@ -7,7 +7,6 @@ public abstract class AbstractProduct implements IProduct {
     private String name;
     private double salesPrice;
     private double purchasePrice;
-    FoodValue foodValue;
 
     // Konstruktor abstrakte Klasse
     public AbstractProduct (String name, double salesPrice, double purchasePrice) {
