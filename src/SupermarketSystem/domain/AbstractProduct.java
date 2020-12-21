@@ -1,18 +1,23 @@
 package SupermarketSystem.domain;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public abstract class AbstractProduct implements IProduct {
 
     // Attribute Supermarkt Produkte
     private String name;
     private double salesPrice;
     private double purchasePrice;
+    private String ingredients;
 
     // Konstruktor abstrakte Klasse
-    public AbstractProduct (String name, double salesPrice, double purchasePrice) {
+    public AbstractProduct (String name, double salesPrice, double purchasePrice, String ingredients) {
         this.name = name;
         this.salesPrice = salesPrice;
         this.purchasePrice = purchasePrice;
+        this.ingredients = ingredients;
     }
 
 

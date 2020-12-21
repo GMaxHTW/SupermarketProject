@@ -1,10 +1,12 @@
 package SupermarketSystem.domain;
 
+import java.util.ArrayList;
+
 public class DrugstoreArticle extends AbstractProduct{
 
 
-    public DrugstoreArticle(String name, double salesPrice, double purchasePrice) {
-        super(name, salesPrice, purchasePrice);
+    public DrugstoreArticle(String name, double salesPrice, double purchasePrice, String ingredients) {
+        super(name, salesPrice, purchasePrice, ingredients);
     }
 
     @Override
